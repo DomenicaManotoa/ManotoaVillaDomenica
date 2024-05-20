@@ -1,0 +1,30 @@
+<h2>Contact Us</h2>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name">
+    <div *ngIf="submitted && f['name'].errors">
+      <span *ngIf="f['name'].errors['required']">Name is required</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email">
+    <div *ngIf="submitted && f['email'].errors">
+      <span *ngIf="f['email'].errors['required']">Email is required</span>
+      <span *ngIf="f['email'].errors['email']">Invalid email</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="message">Message</label>
+    <textarea id="message" formControlName="message"></textarea>
+    <div *ngIf="submitted && f['message'].errors">
+      <span *ngIf="f['message'].errors['required']">Message is required</span>
+      <span *ngIf="f['message'].errors['minlength']">Message must be at least 10 characters long</span>
+    </div>
+  </div>
+
+  <button type="submit">Send</button>
+</form>
